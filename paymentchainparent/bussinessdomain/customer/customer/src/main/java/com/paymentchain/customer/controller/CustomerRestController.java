@@ -3,6 +3,7 @@ package com.paymentchain.customer.controller;
 import com.paymentchain.customer.entities.Customer;
 import com.paymentchain.customer.service.impl.CustomerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -65,6 +66,14 @@ public class CustomerRestController {
     public ResponseEntity<?> delete(@PathVariable("id") long id) {
         customerService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @Autowired
+    private Environment env;
+
+    @GetMapping("/check")
+    public String check(){
+        return "Hello your property value is: " + env.getProperty("custom.activeprofileName");
     }
 
     @GetMapping("/full")

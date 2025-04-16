@@ -15,8 +15,6 @@ import java.util.Optional;
 public class TransactionService implements ITransactionService {
 
     private TransactionRepository transactionRepository;
-
-
     @Autowired
     public TransactionService(TransactionRepository transactionRepository) {
         this.transactionRepository = transactionRepository;
@@ -72,14 +70,13 @@ public class TransactionService implements ITransactionService {
 
 
 
-    public List<Transaction> getByAccount(String ibanAccount){
+    public List<Transaction> getByAccount(String ibanAccount) {
         List<Transaction> transaction = transactionRepository.findByIbanAccount(ibanAccount);
-        if (transaction ==  null){
+        if (transaction == null) {
             throw new RuntimeException("Transaction not found");
         }
         return transaction;
-
     }
 
-
 }
+

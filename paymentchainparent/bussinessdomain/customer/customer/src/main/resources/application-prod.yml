@@ -1,0 +1,27 @@
+server:
+  port: 48152
+
+custom:
+  activeprofileName: Production
+
+spring:
+  application:
+    name: customer
+  jpa:
+    show-sql: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: false
